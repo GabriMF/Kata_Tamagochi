@@ -5,34 +5,57 @@ public class Tamagotchi {
    private int mood = 4;
    private int hunger = 4;
    private int energy = 4;
-   private boolean isSleeping = false;
-   private boolean isPlaying = false;
-   private boolean isEating = false;
 
     //====================================================\\
 
-    public Tamagotchi(){}
+    public Tamagotchi() {}
 
     //====================================================\\
-    public void sleep(){
-        if(isSleeping = true){
-            energy += 2;
+    public void sleep(Tamagotchi tamagotchi){
+        if(tamagotchi.getEnergy() <=8){
+            tamagotchi.setEnergy(getEnergy()+2);
+        }
+        else{
+            notSleepMsg();
         }
     }
-
-    public void mood(){
-        if(isPlaying = true){
+    
+    public void play(){
+        if(energy > 2 && hunger<8){
             energy -=1;
-            hunger += 1;
-            mood += 1;
+        hunger += 1;
+        mood += 1;
+        }
+        else{
+            notPlayMsg();
         }
     }
-
-    public void hunger(){
-        if(isEating = true){
+    
+    public void eat(){
+        if(hunger>=2){
             hunger -= 2;
             energy += 1;
         }
+        else{
+            notEatMsg();
+        }
+    }
+
+    public String notSleepMsg(){
+        return "Im not sleepy!";
+    }
+
+    public String notPlayMsg(){
+        if(energy<=2){
+            return "Im too tired!";
+        }
+        else{
+            return "Im too hungry!";
+        }
+    }
+
+    public String notEatMsg(){
+        return "Im not hungry at all!";
     }
     
     //============ Moods ============\\
@@ -52,7 +75,9 @@ public class Tamagotchi {
         if(energy >= 3){
             return normal;
         }
-        return errorMsg;
+        else{
+            return errorMsg;
+        }
     }
 
     public String moodFace(){
@@ -74,8 +99,11 @@ public class Tamagotchi {
         if(mood<=3){
             return angry;
         }
-        return errorMsg;
+        else{
+            return errorMsg;
+        }
     }
+    //==================================================\\
 
     public int getMood() {
         return mood;
@@ -100,30 +128,4 @@ public class Tamagotchi {
     public void setEnergy(int energy) {
         this.energy = energy;
     }
-
-    public boolean isSleeping() {
-        return isSleeping;
-    }
-
-    public void setSleeping(boolean isSleeping) {
-        this.isSleeping = isSleeping;
-    }
-
-    public boolean isPlaying() {
-        return isPlaying;
-    }
-
-    public void setPlaying(boolean isPlaying) {
-        this.isPlaying = isPlaying;
-    }
-
-    public boolean isEating() {
-        return isEating;
-    }
-
-    public void setEating(boolean isEating) {
-        this.isEating = isEating;
-    }
-
-    
 }
