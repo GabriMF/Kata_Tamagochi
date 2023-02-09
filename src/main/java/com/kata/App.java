@@ -11,6 +11,6 @@ public class App
         // Tamagotchi Pou = new Tamagotchi();
         // Pou.play();
         Tamagotchi gobi = new Tamagotchi();
-        gobi.play();
+        gobi.play(gobi);
     }
 }

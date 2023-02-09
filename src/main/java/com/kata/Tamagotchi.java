@@ -20,21 +20,21 @@ public class Tamagotchi {
         }
     }
     
-    public void play(){
-        if(energy > 2 && hunger<8){
-            energy -=1;
-        hunger += 1;
-        mood += 1;
+    public void play(Tamagotchi tamagotchi){
+        if(tamagotchi.getEnergy() > 2 && tamagotchi.getHunger()<8){
+            tamagotchi.setEnergy(getEnergy()-1);
+            tamagotchi.setHunger(getHunger()+1);
+            tamagotchi.setMood(getMood()+1);
         }
         else{
             notPlayMsg();
         }
     }
     
-    public void eat(){
-        if(hunger>=2){
-            hunger -= 2;
-            energy += 1;
+    public void eat(Tamagotchi tamagotchi){
+        if(tamagotchi.getHunger()>=2){
+            tamagotchi.setHunger(getHunger()-2);
+            tamagotchi.setEnergy(getEnergy()+1);
         }
         else{
             notEatMsg();
@@ -46,7 +46,7 @@ public class Tamagotchi {
     }
 
     public String notPlayMsg(){
-        if(energy<=2){
+        if(getEnergy()<=2){
             return "Im too tired!";
         }
         else{
